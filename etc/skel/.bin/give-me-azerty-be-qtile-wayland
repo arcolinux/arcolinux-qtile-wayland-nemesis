@@ -1,0 +1,56 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+echo "###############################################################################"
+echo "Switch qwerty config  with azerty config"
+echo "###############################################################################"
+echo
+
+user=$( who | cut -d ' ' -f1 | uniq)
+
+cp -v /home/$user/.config/qtile/config_wayland-azerty.py /home/$user/.config/qtile/config_wayland.py
+
+# Define the line to add
+line="XKB_DEFAULT_LAYOUT=be"
+
+# Check if the line already exists in /etc/environment
+if ! grep -Fxq "$line" /etc/environment; then
+    # If the line doesn't exist, append it as a new line at the end
+    echo -e "\n$line" | sudo tee -a /etc/environment > /dev/null
+    echo "Line added to /etc/environment."
+else
+    echo "Line already exists in /etc/environment."
+fi
+
+
+
+echo
+echo "###############################################################################"
+echo "###                         and that is that                               ####"
+echo "###                              reboot                                    ####"
+echo "###############################################################################"

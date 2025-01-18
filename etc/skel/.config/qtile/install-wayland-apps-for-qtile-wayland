@@ -1,0 +1,82 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
+
+echo "###############################################################################"
+echo "Choose to install or remove apps for Qtile Wayland"
+echo "###############################################################################"
+echo
+echo "1. Install apps"
+echo "2. Remove apps"
+echo "3. Exit"
+echo
+
+# Ask the user for input
+read -p "Enter your choice (1/2/3): " choice
+
+case $choice in
+  1)
+    echo "Installing apps..."
+    sudo pacman -S --noconfirm python-pywlroots
+    sudo pacman -S --noconfirm wofi
+    sudo pacman -S --noconfirm swaybg
+    sudo pacman -S --noconfirm grim
+    sudo pacman -S --noconfirm python-pywal
+    sudo pacman -S --noconfirm foot
+    sudo pacman -S --noconfirm arcolinux-foot-git
+    sudo pacman -S --noconfirm volumeicon
+    sudo pacman -S --noconfirm mission-center
+    echo "Installation complete."
+    ;;
+  2)
+    echo "Removing apps..."
+    sudo pacman -Rns --noconfirm python-pywlroots
+    sudo pacman -Rns --noconfirm wofi
+    sudo pacman -Rns --noconfirm swaybg
+    sudo pacman -Rns --noconfirm grim
+    sudo pacman -Rns --noconfirm python-pywal
+    sudo pacman -Rns --noconfirm foot
+    sudo pacman -Rns --noconfirm arcolinux-foot-git
+    sudo pacman -Rns --noconfirm volumeicon
+    sudo pacman -Rns --noconfirm mission-center
+    echo "Removal complete."
+    ;;
+  3)
+    echo "Exiting script."
+    exit 0
+    ;;
+  *)
+    echo "Invalid option. Please select 1, 2, or 3."
+    ;;
+esac
+
+echo
+echo "###############################################################################"
+echo "###                         and that is that                               ####"
+echo "###                              reboot                                    ####"
+echo "###############################################################################"
+
