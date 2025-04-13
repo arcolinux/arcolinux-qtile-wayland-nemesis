@@ -228,16 +228,16 @@ layouts = [
 
 def init_colors():
     return [
-        ["#2F343F","#2F343F"], # color 0
-        ["#2F343F","#2F343F"], # color 1
-        ["#c0c5ce","#c0c5ce"], # color 2
-        ["#fba922","#fba922"], # color 3
-        ["#3384d0","#3384d0"], # color 4
-        ["#f3f4f5","#f3f4f5"], # color 5
-        ["#cd1f3f","#cd1f3f"], # color 6
-        ["#62FF00","#62FF00"], # color 7
-        ["#6790eb","#6790eb"], # color 8
-        ["#a9a9a9","#a9a9a9"], # color 9
+        ["#2F343F", "#2F343F"],  # color 0
+        ["#2F343F", "#2F343F"],  # color 1
+        ["#c0c5ce", "#c0c5ce"],  # color 2
+        ["#fba922", "#fba922"],  # color 3
+        ["#3384d0", "#3384d0"],  # color 4
+        ["#f3f4f5", "#f3f4f5"],  # color 5
+        ["#cd1f3f", "#cd1f3f"],  # color 6
+        ["#62FF00", "#62FF00"],  # color 7
+        ["#6790eb", "#6790eb"],  # color 8
+        ["#a9a9a9", "#a9a9a9"],  # color 9
     ]
 
 
@@ -438,7 +438,6 @@ keys.extend([
     Key([mod, "shift"], "Return", lazy.spawn("thunar")),
     Key([mod, "shift"], "d", lazy.spawn(menu)),
     Key([mod], "d", lazy.spawn(fullmenu)),
-    Key([mod, "shift"], "s", lazy.spawn("pkill -USR1 -x sxhkd")),  # might not apply in Wayland
 
     #
     # CONTROL + ALT KEYS
@@ -451,7 +450,6 @@ keys.extend([
     Key([mod2, mod1], "c", lazy.spawn("catfish")),
     Key([mod2, mod1], "g", lazy.spawn("chromium -no-default-browser-check")),
     Key([mod2, mod1], "f", lazy.spawn("firefox")),
-    # nitrogen is X11-based for wallpaper; if you want swaybg, remove this:
     Key([mod2, mod1], "i", lazy.spawn("nitrogen")),
     Key([mod2, mod1], "k", lazy.spawn("archlinux-logout")),
     Key([mod2, mod1], "l", lazy.spawn("archlinux-logout")),
@@ -520,11 +518,6 @@ keys.extend([
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +10%")),  # Wayland alt
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +10%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-")),
-
-    #
-    # DESKTOP SPECIFIC
-    #
-    Key([mod2, mod1], "o", lazy.spawn(f"{home}/.config/qtile/scripts/picom-toggle.sh")),
 ])
